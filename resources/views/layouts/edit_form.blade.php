@@ -62,14 +62,6 @@
 
 			<div class="edit_block">
 				@yield('edit_block')
-				<div class="edit_block_item">
-					<div class="edit_block_item_title">
-						@yield('edit_block_item_title')
-					</div>
-					<div class="edit_block_item_content">
-						@yield('edit_block_item_content')
-					</div>
-				</div>
 			</div>
 		</form>
 	</div>
