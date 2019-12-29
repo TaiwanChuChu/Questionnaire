@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {}
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +24,8 @@ class HomeController extends Controller
         // foreach ($SubMenu as $sub) {
         //     $sub_menu[$sub->UpperID][] = ['MenuNo' => $sub->MenuNo, 'MenuName' => $sub->MenuName];
         // }
-        return view('home');
+
+        return view('home', ['route2' => session('route2')]);
     }
 
     /**

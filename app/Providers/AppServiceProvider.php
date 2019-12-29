@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Core\Helper;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
@@ -35,9 +36,10 @@ class AppServiceProvider extends ServiceProvider
             foreach ($SubMenu as $sub) {
                 $sub_menu[$sub->UpperID][] = ['MenuNo' => $sub->MenuNo, 'MenuName' => $sub->MenuName];
             }
-            return $view->with(['Menu' => $Menu, 'SubMenu' => $sub_menu]);
+            $view->with(['Menu' => $Menu, 'SubMenu' => $sub_menu]);
         });
+
         // RoutePath
-        session(['RoutePath' => Helper::getRoutePath()]);
+        config('OtherConfig.finalvariable.route.ROUTEPATH', Helper::getRoutePath());
     }
 }

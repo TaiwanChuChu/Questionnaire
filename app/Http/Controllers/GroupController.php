@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
+    public function __construct()
+    {}
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +16,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        return view('s1000.s1020');
+        return view('s1000.s1020.index');
     }
 
     /**

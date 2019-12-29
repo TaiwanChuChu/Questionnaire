@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use App\Core\Helper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class MenuController extends Controller
 {
+    private $ConfigRoutePath;
     private $sortMark;
+    private $defOrder;
+
     public function __construct()
     {
         // $this->getVarVal();
+        $this->ConfigRoutePath = config('OtherConfig.finalvariable.route.ROUTEPATH');
         $this->sortMark = ['ASC' => '▲', 'DESC' => '▼'];
+        $this->defOrder = 'a.MenuNo';
     }
 
     /**
@@ -28,22 +34,22 @@ class MenuController extends Controller
         $MenuNo = $request->MenuNo;
         $MenuName = $request->MenuName;
 
-        $RouteOrder = session('RoutePath') . '_order';
-        $RouteSort = session('RoutePath') . '_sort';
+        $RouteOrder = $this->ConfigRoutePath . '_order';
+        $RouteSort = $this->ConfigRoutePath . '_sort';
 
         $sort = 'ASC';
         if (session()->has($RouteOrder)) {
-            if ($request->order != session($RouteOrder)) {
+            if ($request->order != '' && $request->order != session($RouteOrder)) {
                 $order = $request->order;
             } else if ($request->order == session($RouteOrder)) {
                 $sort = session($RouteSort);
                 session([$RouteSort => $sort == 'ASC' ? 'DESC' : 'ASC']);
                 $order = $request->order;
             } else {
-                $order = 'a.MenuNo';
+                $order = session($RouteOrder);
             }
         } else {
-            $order = 'a.MenuNo';
+            $order = $this->defOrder;
         }
 
         $where = [];
@@ -63,7 +69,7 @@ class MenuController extends Controller
             ->orderBy($order, $sort)
             ->paginate(10);
 
-        return view('s1000.s1030', [
+        return view('s1000.s1030.index', [
             'data' => $data,
             'MenuNo' => $MenuNo,
             'MenuName' => $MenuName,
@@ -80,7 +86,18 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        $MenuNo = '';
+        $MenuName = '';
+        $UpperID = '';
+        $IsHide = '1';
+        $Status = '1';
+        return view('s1000.s1030.view', [
+            'MenuNo' => $MenuNo,
+            'MenuName' => $MenuName,
+            'UpperID' => $UpperID,
+            'IsHide' => $IsHide,
+            'Status' => $Status,
+        ]);
     }
 
     /**

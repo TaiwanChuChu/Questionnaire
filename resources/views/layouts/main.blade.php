@@ -7,17 +7,17 @@
 			overflow: auto;
 			height: 100%;
 			/*background-color: pink;*/
+			background-color: rgb(19,20,23);
 		}
 		.wrap{
 			position: relative;
 			min-height: 100%;
 		}
 		#navbar {
-			box-sizing: border-box;
 			position: fixed;
 			top: 0;
 			text-align: right;
-			background-color: green;
+			background-color: #444857;
 			padding: 5px;
 			width: 100%;
 			z-index: 2;
@@ -25,26 +25,24 @@
 		}
 		#navbar a {
 			text-decoration: none;
+			color: white;
 		}
 		#sidebar {
-			position: fixed;
+			position: absolute;
 			top: 0;
 			width: 200px;
-			height: 100%;
-			background-color: yellow;
+			min-height: 100%;
+			background-color: rgb(40, 41, 48);
+			/*background-color: rgb(30, 31, 38);*/
 			overflow: auto;
 			z-index: 1;
 		}
 		#content {
-    		box-sizing: border-box;
-			padding-top: 35px;
-			padding-right: 10px;
-			padding-bottom: 55px;
-			padding-left: 10px;
+			padding: 35px 10px 55px 10px;
 			margin-right: 5px;
 			margin-left: 210px;
 			/*height: 500px;*/
-			/*background-color: yellow;*/
+			background-color: rgb(19,20,23);
 		}
 		#footer {
 			box-sizing: border-box;
@@ -69,6 +67,7 @@
 	</div>
 	<div class="wrap">
 		<div id="content">
+			@yield('css')
 			@yield('main_content')
 		</div>
 		<footer id="footer">

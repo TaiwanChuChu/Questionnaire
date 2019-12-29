@@ -10,14 +10,4 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    // public function getVarVal()
-    // {
-    //     $this->middleware(function ($request, $next) {
-
-    //         // Request handle ..
-    //         Helper::VarReset();
-    //         return $next($request);
-    //     });
-    // }
 }

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
+    public function __construct()
+    {}
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +16,7 @@ class AccountController extends Controller
      */
     public function index(Request $request)
     {
-        return view('s1000.s1010');
+        return view('s1000.s1010.index');
     }
 
     /**
