@@ -13,7 +13,7 @@
 			<label for="MenuNo">選單編號</label>
 		</div>
 		<div class="edit_block_item_content">
-			<input type="email" id="MenuNo" name="MenuNo" value="{{ $MenuNo }}" required data-parsley-type="email">
+			<input type="email" id="MenuNo" name="MenuNo" value="{{ $MenuNo }}" required>
 		</div>
 	</div>
 	<div class="edit_block_item">
