@@ -12,4 +12,9 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+	.js('resources/js/edit_form_core.js', 'public/js/edit_form_core.js')
+    .sass('resources/sass/app.scss', 'public/css')
+	.styles('node_modules/parsleyjs/src/parsley.css', 'public/css/edit_form_core.css');
+
+// 自動偵測檔案是否有更動，如有更動瀏覽器自動刷新
+mix.browserSync('http://questionnaire.lwj');

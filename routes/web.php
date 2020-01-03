@@ -23,5 +23,5 @@ Route::prefix('s1000')->group(function () {
     Route::get('s1020', 'GroupController@index')->name('s1020');
     Route::get('s1030', 'MenuController@index')->name('s1030');
     Route::post('s1030', 'MenuController@event')->name('s1030_event');
-    Route::get('s1030/view/{status}/{id?}', 'MenuController@create')->name('s1030_view');
+    Route::get('s1030/view/{status}/{id?}', 'MenuController@edit')->name('s1030_view');
 });

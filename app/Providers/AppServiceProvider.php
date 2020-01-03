@@ -39,6 +39,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with(['Menu' => $Menu, 'SubMenu' => $sub_menu]);
         });
 
+        view()->composer('layouts.menu_title', function ($view) {
+            $SubMenu = DB::table('Menu')->where([['UpperID', '>', '0'], ['IsHide', '0'], ['Status', '1'], ['MenuNo', Helper::getMenuNum()]])->select('MenuNo', 'MenuName')->first();
+            $view->with(['SubMenu' => $SubMenu]);
+        });
+
         // RoutePath
         config('OtherConfig.finalvariable.route.ROUTEPATH', Helper::getRoutePath());
     }

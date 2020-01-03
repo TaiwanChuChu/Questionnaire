@@ -14,4 +14,8 @@ return [
     'route' => [
         'ROUTEPATH' => Helper::getRoutePath(),
     ],
+
+    'menu' => [
+        'MENU_URI_INDEX' => 2, // menu number position in uri
+    ],
 ];

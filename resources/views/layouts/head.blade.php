@@ -29,7 +29,6 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
     font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
-    color: white;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

@@ -53,9 +53,10 @@
 
 	/* 已選中之選單就不會有互動 */
 	.sub_menu_active:hover {
-		font-size: 16px !important;
+		font-size: 14px !important; /* font-size 跟原來 sub_menu a 的 font-size一樣即可 */
 	}
 </style>
+
 <div class="menu">
 	<div class="logo">
 		<a href="{{ route('home') }}">首頁區</a>
@@ -65,7 +66,7 @@
 			<div class="sub_menu">
 				@foreach($SubMenu[$menu->MenuID] as $sub_menu)
 					@php
-						if($sub_menu['MenuNo'] === \Request::route()->getName()){
+						if($sub_menu['MenuNo'] === \Request::route()->getName() || $sub_menu['MenuNo'] === \Request::segment(\Config::get('OtherConfig.finalvariable.menu.MENU_URI_INDEX'))){
 							$sub_menu_active = 'sub_menu_active';
 						}else{
 							$sub_menu_active = '';

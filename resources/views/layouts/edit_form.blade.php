@@ -7,8 +7,9 @@
 		}
 
 		.edit_form_option_wrap > .option {
-		    border: 0;
-		    padding: 5px;
+			border: 0;
+			display: inline-block;
+		    padding: 7px;
 		    border-radius: 3px;
 		    color: #ffffff;
 		    background-color: #0095ff;
@@ -43,6 +44,7 @@
 		.edit_block_item_title {
 		    padding: 3px;
 		    border: 1px solid red;
+		    font-weight: bold;
 		}
 
 
@@ -51,10 +53,11 @@
 		    border: 1px solid blue;
 		}
 	</style>
+	<link rel="stylesheet" href="{{ asset('css/edit_form_core.css') }}">
 @endsection
 @section('main_content')
 	<div class="edit_form">
-		<form method="post">
+		<form method="post" id="main_form">
 			@csrf
 			<div class="edit_form_option_wrap">
 				@yield('edit_form_option_wrap')
@@ -65,4 +68,13 @@
 			</div>
 		</form>
 	</div>
+@endsection
+@section('javascript')
+	<script type="text/javascript" src="{{ asset('js/edit_form_core.js') }}"></script>
+	<script type="text/javascript">
+		$(function() {
+			// 啟用前端表單驗證
+	  		$('#main_form').parsley();
+		});
+	</script>
 @endsection
